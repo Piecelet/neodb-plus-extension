@@ -5,7 +5,7 @@
 </p>
 &nbsp;
 
-# Neo2DB
+# NeoDB Plus (Neo2DB)
 
 Auto-fill Douban Music submissions from NeoDB, and quickly search between Douban and NeoDB with direct page navigation.
 
@@ -21,6 +21,10 @@ Auto-fill Douban Music submissions from NeoDB, and quickly search between Douban
 1. Click the ➕ button next to the cover on the NeoDB Album page to automatically fill the Douban Music submission form with the album details, while also downloading the album cover.
 2. Click the 🔍 button next to the cover on the NeoDB Album/Movie/TV/Book pages to search on NeoDB.
 3. Click the 🧩NeoDB logo button at the top of the right sidebar on Douban Music/Movie/Book pages to search on NeoDB.
+
+## Acknowledgements
+
+- [@the3ash](https://github.com/the3ash) for the initial implementation and design of the extension.
 
 ## License
 
