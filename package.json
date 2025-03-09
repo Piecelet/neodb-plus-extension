@@ -4,6 +4,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://github.com/lcandy2/neodb-extension",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
