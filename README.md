@@ -1,7 +1,7 @@
 &nbsp;
 
 <p align="center">
-  <img src="./icons/icon128.png" alt="Example Image">
+  <img src="./public/icon/128.png" alt="NeoDB Plus (Neo2DB)">
 </p>
 &nbsp;
 
