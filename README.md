@@ -1,11 +1,9 @@
 &nbsp;
-
-<p align="center">
+<p align="left">
   <img src="./public/icon/128.png" alt="NeoDB Plus (Neo2DB)">
 </p>
-&nbsp;
 
-# NeoDB Plus (Neo2DB)
+# NeoDB Plus by Piecelet
 
 Auto-fill Douban Music submissions from NeoDB, and quickly search between Douban and NeoDB with direct page navigation.
 
