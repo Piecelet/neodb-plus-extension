@@ -1,6 +1,6 @@
-import { sendMessage } from "webext-bridge/content-script";
+import { defineExtensionMessaging } from "@webext-core/messaging";
 
-import type { FrodoSubjectResponse } from "../shared/douban-rating";
+import type { FrodoSubjectResponse, MessagingProtocolMap } from "../shared/douban-rating";
 
 const RATING_CONTAINER_SELECTOR = "[data-neodb-douban-rating]";
 
@@ -41,12 +41,10 @@ const formatRating = (response: FrodoSubjectResponse) => {
   return `豆瓣评分：${value}${countText}`;
 };
 
+const messaging = defineExtensionMessaging<MessagingProtocolMap>();
+
 const fetchDoubanRating = (doubanId: string) =>
-  sendMessage<FrodoSubjectResponse>(
-    "fetch-douban-rating",
-    { doubanId },
-    "background",
-  );
+  messaging.sendMessage("fetch-douban-rating", { doubanId });
 
 const attachRating = async (siteList: Element) => {
   const existing = siteList.querySelector(RATING_CONTAINER_SELECTOR);

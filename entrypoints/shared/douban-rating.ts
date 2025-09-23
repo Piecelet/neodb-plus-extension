@@ -11,3 +11,10 @@ export type FrodoSubjectResponse = {
   rating?: DoubanRating;
 };
 
+export type FetchDoubanRatingRequest = {
+  doubanId: string;
+};
+
+export interface MessagingProtocolMap {
+  'fetch-douban-rating': (data: FetchDoubanRatingRequest) => FrodoSubjectResponse | undefined | Promise<FrodoSubjectResponse | undefined>;
+}

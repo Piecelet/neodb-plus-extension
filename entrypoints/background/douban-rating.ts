@@ -1,10 +1,6 @@
-import { onMessage } from "webext-bridge/background";
+import { defineExtensionMessaging } from "@webext-core/messaging";
 
-import type { FrodoSubjectResponse } from "../shared/douban-rating";
-
-type FetchDoubanRatingPayload = {
-  doubanId: string;
-};
+import type { FrodoSubjectResponse, MessagingProtocolMap } from "../shared/douban-rating";
 
 const API_BASE = "https://frodo.douban.com/api/v2/subject";
 const API_KEY = "0ac44ae016490db2204ce0a042db2916";
@@ -24,30 +20,29 @@ const generateBid = () => {
   return bid;
 };
 
+const messaging = defineExtensionMessaging<MessagingProtocolMap>();
+
 export const registerDoubanRatingHandler = () => {
-  onMessage<FetchDoubanRatingPayload, FrodoSubjectResponse | undefined>(
-    "fetch-douban-rating",
-    async ({ data }) => {
-      const { doubanId } = data;
-      if (!doubanId) {
-        throw new Error("Missing Douban subject id");
-      }
+  messaging.onMessage("fetch-douban-rating", async ({ data }) => {
+    const { doubanId } = data;
+    if (!doubanId) {
+      throw new Error("Missing Douban subject id");
+    }
 
-      const requestUrl = `${API_BASE}/${doubanId}?apiKey=${API_KEY}`;
-      const response = await fetch(requestUrl, {
-        headers: {
-          "user-agent": USER_AGENT,
-          referer: REFERER,
-          cookie: `bid=${generateBid()}`,
-        },
-      });
+    const requestUrl = `${API_BASE}/${doubanId}?apiKey=${API_KEY}`;
+    const response = await fetch(requestUrl, {
+      headers: {
+        "user-agent": USER_AGENT,
+        referer: REFERER,
+        cookie: `bid=${generateBid()}`,
+      },
+    });
 
-      if (!response.ok) {
-        throw new Error(`Douban rating request failed: ${response.status}`);
-      }
+    if (!response.ok) {
+      throw new Error(`Douban rating request failed: ${response.status}`);
+    }
 
-      const payload = (await response.json()) as FrodoSubjectResponse;
-      return payload;
-    },
-  );
+    const payload = (await response.json()) as FrodoSubjectResponse;
+    return payload;
+  });
 };
