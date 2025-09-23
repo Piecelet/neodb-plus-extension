@@ -24,10 +24,7 @@ const ensureContainer = (sidebar: Element) => {
 
   container = document.createElement("div");
   container.dataset.neodbDoubanRating = "true";
-  container.style.marginTop = "8px";
-  container.style.fontSize = "14px";
   container.style.lineHeight = "20px";
-  container.style.color = "var(--np-secondary-text, #5f6368)";
   // insert at top of sidebar
   sidebar.insertBefore(container, sidebar.firstChild);
 
