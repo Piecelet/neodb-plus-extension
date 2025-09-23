@@ -17,4 +17,5 @@ export type FetchDoubanRatingRequest = {
 
 export interface MessagingProtocolMap {
   'fetch-douban-rating': (data: FetchDoubanRatingRequest) => FrodoSubjectResponse | undefined | Promise<FrodoSubjectResponse | undefined>;
+  'fetch-douban-distribution': (data: { url: string }) => { distribution?: number[] } | Promise<{ distribution?: number[] }>;
 }

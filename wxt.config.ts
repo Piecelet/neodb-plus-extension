@@ -4,7 +4,7 @@ import { defineConfig } from "wxt";
 export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   manifest: {
-    name: "NeoDB Plus (Neo2DB)",
+    name: "NeoDB+ by Piecelet",
     short_name: "NeoDB+",
     permissions: [
       "activeTab",

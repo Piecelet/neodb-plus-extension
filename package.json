@@ -1,10 +1,11 @@
 {
-  "name": "neodb-extension",
+  "name": "neodb-plus-extension",
   "description": "Auto-fill Douban Music submissions from NeoDB, and quickly search between Douban and NeoDB with direct page navigation.",
+  "author": "Piecelet",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://github.com/lcandy2/neodb-extension",
+  "homepage": "https://github.com/lcandy2/neodb-plus-extension",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",

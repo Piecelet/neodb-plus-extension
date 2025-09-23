@@ -26,4 +26,24 @@ export const registerDoubanRatingHandler = () => {
     const payload = (await response.json()) as FrodoSubjectResponse;
     return payload;
   });
+
+  messaging.onMessage("fetch-douban-distribution", async ({ data }) => {
+    const { url } = data;
+    if (!url) return { distribution: undefined };
+    const res = await fetch(url, {
+      // Reuse UA/Referer spoofing via header interceptors
+      credentials: "omit",
+      cache: "no-store",
+    });
+    if (!res.ok) return { distribution: undefined };
+    const html = await res.text();
+    const matches = [...html.matchAll(/<span class=\"rating_per\">(\d+(?:\.\d+)?)%<\/span>/g)]
+      .map((m) => parseFloat(m[1]))
+      .slice(0, 5);
+    // Douban order is 5★ to 1★
+    if (matches.length === 5) {
+      return { distribution: matches as number[] };
+    }
+    return { distribution: undefined };
+  });
 };
