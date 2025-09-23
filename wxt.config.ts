@@ -13,6 +13,7 @@ export default defineConfig({
       "https://music.douban.com/*",
       "https://movie.douban.com/*",
       "https://book.douban.com/*",
+      "https://frodo.douban.com/*",
     ],
   },
 });
