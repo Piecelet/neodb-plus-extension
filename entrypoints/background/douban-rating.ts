@@ -4,21 +4,7 @@ import type { FrodoSubjectResponse, MessagingProtocolMap } from "../shared/douba
 
 const API_BASE = "https://frodo.douban.com/api/v2/subject";
 const API_KEY = "0ac44ae016490db2204ce0a042db2916";
-const USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF XWEB/8391";
-const REFERER =
-  "https://servicewechat.com/wx2f9b06c1de1ccfca/99/page-frame.html";
-const BID_LENGTH = 11;
-const BID_CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-";
-
-const generateBid = () => {
-  let bid = "";
-  for (let i = 0; i < BID_LENGTH; i += 1) {
-    const index = Math.floor(Math.random() * BID_CHARSET.length);
-    bid += BID_CHARSET[index];
-  }
-  return bid;
-};
+// UA 和 Referer 通过 webRequest 在 background 中统一伪装
 
 const messaging = defineExtensionMessaging<MessagingProtocolMap>();
 
@@ -30,13 +16,8 @@ export const registerDoubanRatingHandler = () => {
     }
 
     const requestUrl = `${API_BASE}/${doubanId}?apiKey=${API_KEY}`;
-    const response = await fetch(requestUrl, {
-      headers: {
-        "user-agent": USER_AGENT,
-        referer: REFERER,
-        cookie: `bid=${generateBid()}`,
-      },
-    });
+    // 伪装 UA/Referer 在 webRequest 中进行，这里不直接设置受限头
+    const response = await fetch(requestUrl);
 
     if (!response.ok) {
       throw new Error(`Douban rating request failed: ${response.status}`);

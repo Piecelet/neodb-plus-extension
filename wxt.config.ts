@@ -6,7 +6,16 @@ export default defineConfig({
   manifest: {
     name: "NeoDB Plus (Neo2DB)",
     short_name: "NeoDB+",
-    permissions: ["activeTab", "scripting", "storage", "webNavigation"],
+    permissions: [
+      "activeTab",
+      "scripting",
+      "storage",
+      "webNavigation",
+      "webRequest",
+      "webRequestBlocking",
+      "declarativeNetRequest",
+      "declarativeNetRequestWithHostAccess",
+    ],
     host_permissions: [
       "https://neodb.social/*",
       "https://music.douban.com/*",
