@@ -70,28 +70,21 @@ const Stars: React.FC<{ value: number }> = ({ value }) => {
   const stars = Array.from({ length: 5 }).map((_, i) => (
     <Star key={i} fill={Math.max(0, Math.min(1, s - i))} />
   ));
-  return <div style={{ display: "flex", gap: 4 }}>{stars}</div>;
+  return <div style={{ display: "flex", gap: 0 }}>{stars}</div>;
 };
+
+const MAX_BAR_PX = 100;
 
 const BarRow: React.FC<{ label: string; percent?: number }> = ({ label, percent }) => {
   const p = typeof percent === "number" ? percent : 0;
+  const widthPx = Math.round(Math.max(0, Math.min(100, p)) * (MAX_BAR_PX / 100));
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4 }}>
-      <div style={{ width: 24, color: "#777", fontSize: 12 }}>{label}</div>
-      <div style={{ flex: 1, height: 10, background: "#fde2b3", borderRadius: 2, position: "relative" }}>
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            height: 10,
-            width: `${p}%`,
-            background: "#ffcc80",
-            borderRadius: 2,
-          }}
-        />
+    <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 2 }}>
+      <div style={{ color: "#777", fontSize: 12, lineHeight: "14px", textAlign: "right" }}>{label}</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ height: 10, width: `${widthPx}px`, background: "#ffcc80", borderRadius: 2 }} />
+        <div style={{ color: "#777", fontSize: 12, lineHeight: "14px" }}>{p ? `${p.toFixed(1)}%` : ""}</div>
       </div>
-      <div style={{ width: 48, textAlign: "right", color: "#777", fontSize: 12 }}>{p ? `${p.toFixed(1)}%` : ""}</div>
     </div>
   );
 };
@@ -108,11 +101,11 @@ const DoubanRatingCard: React.FC<{
     <div style={{ padding: "8px 0 12px", borderBottom: "1px solid #eee" }}>
       <div style={{ color: "#9e9e9e", fontSize: 13, marginBottom: 6 }}>豆瓣评分</div>
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ fontSize: 32, fontWeight: 600, color: "#333", minWidth: 56 }}>{avg ? avg.toFixed(1) : "-"}</div>
+        <div style={{ fontSize: "2rem", fontWeight: 600, color: "#333" }}>{avg ? avg.toFixed(1) : "-"}</div>
         <div>
           <Stars value={avg} />
           {count ? (
-            <a href={doubanUrl} target="_blank" rel="noopener noreferrer" style={{ color: "#1e88e5", fontSize: 12 }}>
+            <a href={doubanUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: "90%" }}>
               {count}人评价
             </a>
           ) : null}
@@ -196,4 +189,3 @@ export const neodbDoubanRating = () => {
     void run();
   }
 };
-
