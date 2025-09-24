@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { createRoot } from "react-dom/client";
 
 import type { FrodoSubjectResponse, MessagingProtocolMap } from "../shared/douban-rating";
+import { isNeoDBSite } from "./lib/is-neodb";
 
 const RATING_CONTAINER_SELECTOR = "[data-neodb-douban-rating]";
 const SIDEBAR_SELECTOR = "#item-sidebar";
@@ -170,7 +171,7 @@ const attachRating = async () => {
 };
 
 export const neodbDoubanRating = () => {
-  if (!window.location.href.startsWith("https://neodb.social")) {
+  if (!isNeoDBSite()) {
     return;
   }
 
