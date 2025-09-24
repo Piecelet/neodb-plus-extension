@@ -140,7 +140,7 @@ const DoubanRatingCard: React.FC<{
   const count = formatCount(rating?.count);
   const rows = useMemo(() => distribution ?? [], [distribution]);
   return (
-    <div style={{ padding: "8px 0 12px", borderBottom: "1px solid #eee" }}>
+    <div style={{ paddingBlockEnd: 8, borderBottom: "1px solid #eee", marginBlockEnd: 8 }}>
       <div style={{ color: "#9e9e9e", fontSize: 13, marginBottom: 6 }}>
         豆瓣评分{loading ? "加载中…" : error ? "获取失败" : ""}
       </div>
