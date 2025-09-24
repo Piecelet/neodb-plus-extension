@@ -17,11 +17,7 @@ export default defineConfig({
       "declarativeNetRequestWithHostAccess",
     ],
     host_permissions: [
-      "https://neodb.social/*",
-      "https://music.douban.com/*",
-      "https://movie.douban.com/*",
-      "https://book.douban.com/*",
-      "https://frodo.douban.com/*",
+      "*",
     ],
   },
 });
