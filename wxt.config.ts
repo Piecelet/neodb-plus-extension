@@ -13,7 +13,9 @@ export default defineConfig({
       "declarativeNetRequestWithHostAccess",
     ],
     host_permissions: [
-      "*",
+      "https://frodo.douban.com/*",
+      "https://*.douban.com/*",
+      "<all_urls>"
     ],
     declarative_net_request: {
       rule_resources: [
