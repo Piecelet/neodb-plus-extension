@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "User-Agent",
+          "operation": "set",
+          "value": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.56(0x18003833) NetType/4G Language/zh_CN"
+        },
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://servicewechat.com/wx2f9b06c1de1ccfca/99/page-frame.html"
+        }
+      ]
+    },
+    "condition": {
+      "requestDomains": ["frodo.douban.com"]
+    }
+  }
+]

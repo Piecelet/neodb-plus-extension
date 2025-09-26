@@ -10,14 +10,19 @@ export default defineConfig({
       "activeTab",
       "scripting",
       "storage",
-      "webNavigation",
-      "webRequest",
-      "webRequestBlocking",
-      "declarativeNetRequest",
       "declarativeNetRequestWithHostAccess",
     ],
     host_permissions: [
       "*",
     ],
+    declarative_net_request: {
+      rule_resources: [
+        {
+          id: "frodo_douban_com",
+          enabled: true,
+          path: "declarative-net-request-rules/frodo_douban_com.json",
+        }
+      ],
+    }
   },
 });
