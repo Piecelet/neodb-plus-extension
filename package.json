@@ -14,7 +14,9 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
+    "postinstall": "wxt prepare",
+    "format-and-lint": "biome check .",
+    "format-and-lint:fix": "biome check . --write"
   },
   "dependencies": {
     "@webext-core/messaging": "^2.3.0",
@@ -23,6 +25,7 @@
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@types/chrome": "^0.1.12",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
