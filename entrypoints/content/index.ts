@@ -1,5 +1,4 @@
 import { doubanPageSearch } from "./douban-page-search";
-import { neodbAlbumPageCreate } from "./neodb-album-page-create";
 import { neodbDoubanRating } from "./douban-rating";
 import { neodbPageSearch } from "./neodb-page-search";
 
@@ -13,7 +12,6 @@ export default defineContentScript({
   main() {
     neodbPageSearch();
     doubanPageSearch();
-    neodbAlbumPageCreate();
     neodbDoubanRating();
   },
 });
