@@ -7,15 +7,12 @@ export default defineConfig({
     name: "NeoDB+ by Piecelet",
     short_name: "NeoDB+",
     permissions: [
-      "activeTab",
       "scripting",
-      "storage",
       "declarativeNetRequestWithHostAccess",
     ],
     host_permissions: [
       "https://frodo.douban.com/*",
       "https://*.douban.com/*",
-      "<all_urls>"
     ],
     declarative_net_request: {
       rule_resources: [

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import type { FrodoSubjectResponse } from "../../../shared/douban-rating";
-import { getDoubanRatingService } from "../../../shared/douban-rating";
+import type { FrodoSubjectResponse } from "@/entrypoints/shared/douban-rating";
+import { getDoubanRatingService } from "@/entrypoints/shared/douban-rating";
 import { Stars } from "./star";
 import { BarRow } from "./bar-row";
 
@@ -89,4 +89,3 @@ export const DoubanRatingCard: React.FC<{
     </div>
   );
 };
-

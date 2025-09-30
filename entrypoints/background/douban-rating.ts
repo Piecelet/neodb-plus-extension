@@ -1,5 +1,5 @@
-import type { FrodoSubjectResponse } from "../shared/douban-rating";
-import { registerDoubanRatingService } from "../shared/douban-rating";
+import type { FrodoSubjectResponse } from "@/entrypoints/shared/douban-rating";
+import { registerDoubanRatingService } from "@/entrypoints/shared/douban-rating";
 
 const API_BASE = "https://frodo.douban.com/api/v2/subject";
 const API_KEY = "0ac44ae016490db2204ce0a042db2916";

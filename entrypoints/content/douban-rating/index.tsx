@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { isNeoDBSite } from "../lib/is-neodb";
+import { isNeoDBSite } from "@/entrypoints/content/lib/is-neodb";
 import { DoubanRatingCard } from "./components/douban-rating-card";
 
 const RATING_CONTAINER_SELECTOR = "[data-neodb-douban-rating]";
