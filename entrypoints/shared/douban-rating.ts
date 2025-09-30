@@ -15,7 +15,9 @@ export type FetchDoubanRatingRequest = {
   doubanId: string;
 };
 
-export interface MessagingProtocolMap {
-  'fetch-douban-rating': (data: FetchDoubanRatingRequest) => FrodoSubjectResponse | undefined | Promise<FrodoSubjectResponse | undefined>;
-  'fetch-douban-distribution': (data: { url: string }) => { distribution?: number[] } | Promise<{ distribution?: number[] }>;
-}
+export type DoubanRatingService = {
+  fetchDoubanRating: (data: FetchDoubanRatingRequest) => Promise<FrodoSubjectResponse | undefined>;
+  fetchDoubanDistribution: (data: { url: string }) => Promise<{ distribution?: number[] }>;
+};
+
+export { getDoubanRatingService, registerDoubanRatingService } from "./douban-rating.service";
