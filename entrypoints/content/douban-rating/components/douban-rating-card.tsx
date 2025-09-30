@@ -1,20 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { defineExtensionMessaging } from "@webext-core/messaging";
-
-import type { FrodoSubjectResponse, MessagingProtocolMap } from "../../../shared/douban-rating";
+import type { FrodoSubjectResponse } from "@/entrypoints/shared/douban-rating";
+import { getDoubanRatingService } from "@/entrypoints/shared/douban-rating";
 import { Stars } from "./star";
 import { BarRow } from "./bar-row";
 
 const formatCount = (count?: number) =>
   typeof count === "number" ? new Intl.NumberFormat("zh-CN").format(count) : undefined;
 
-const messaging = defineExtensionMessaging<MessagingProtocolMap>();
+const doubanRatingService = getDoubanRatingService();
 
 const fetchDoubanRating = (doubanId: string) =>
-  messaging.sendMessage("fetch-douban-rating", { doubanId });
+  doubanRatingService.fetchDoubanRating({ doubanId });
 
 const fetchDoubanDistribution = (url: string) =>
-  messaging.sendMessage("fetch-douban-distribution", { url });
+  doubanRatingService.fetchDoubanDistribution({ url });
 
 export const DoubanRatingCard: React.FC<{
   doubanUrl: string;
@@ -90,4 +89,3 @@ export const DoubanRatingCard: React.FC<{
     </div>
   );
 };
-
